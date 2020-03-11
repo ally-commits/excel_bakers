@@ -159,6 +159,12 @@
                     <span class="menu-title" data-i18n="nav.dash.main">View Users</span> 
                 </a>
             </li>  
+            <li class="nav-item ">
+                <a href="/admin/view-reviews">
+                    <i class="ft ft-user"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">View Reviews</span> 
+                </a>
+            </li>  
         </ul>
         <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 599px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 95px;"></div></div></div>
     </div>

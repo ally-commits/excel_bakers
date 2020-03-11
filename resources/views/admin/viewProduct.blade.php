@@ -27,12 +27,6 @@
                             
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" 
                                 aria-label="Age: activate to sort column ascending" style="width: 80px;">Type</th>
-
-                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" 
-                                aria-label="Age: activate to sort column ascending" style="width: 26px;">Quantity</th>
-
-                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" 
-                                aria-label="Age: activate to sort column ascending" style="width: 26px;">Remaining</th>
                             
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" 
                                 aria-label="Start date: activate to sort column ascending" style="width: 30px;">Action</th>     
@@ -50,9 +44,7 @@
                                     @else
                                         <span class="d-flex align-items-center"><i class="ft-stop-circle text-danger mr-1"></i> Non Veg</span>
                                     @endif
-                                </td>
-                                <td>{{ $product['quantity'] }}</td> 
-                                <td>{{ $product['quantityLeft'] }}</td>
+                                </td> 
                                 <td class="d-flex" style="align-items: center;"> 
                                     <span class="dropdown">
                                         <button id="{{ $product->id }}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i class="ft ft-settings"></i></button>
@@ -106,19 +98,8 @@
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror 
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label>Product Quantity</label> 
-                                                            <input type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{  $product->quantity }}" required autocomplete="quantity" autofocus>
+                                                        </div> 
 
-                                                            @error('quantity')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror 
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
                                                         <div class="col-md-4">
                                                             @if($product['type'])
                                                                 <label style="margin-right: 5px;">Veg</label>
@@ -132,6 +113,8 @@
                                                                 <input type="radio" name="type" value="0" class="" checked>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="col-md-8">
                                                             <label for="">Enter the Description</label>
                                                             <input name="desc" class="form-control @error('desc') is-invalid @enderror" name="desc" 

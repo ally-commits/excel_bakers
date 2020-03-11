@@ -8,9 +8,9 @@
                 <div class="card-content d-flex p-1">
                     <img class="card-img-top img-fluid" style="height: 100px; width: auto;"src="{{ asset($product['image']) }}" alt="{{ $product['name']}}">
                     <div class="card-body" style="padding: 6px;">
-                        <h4 class="card-title">{{ $product['name']}}</h4>
+                        <a class="card-title pb-1" href="/product/{{$product->id}}">{{ $product['name']}}</a>
                         <p class="card-text">
-                            {{ $product['desc']}}
+                            {{ substr($product['desc'],0,50) }}.. .
                         </p>
                     </div>
                 </div>
@@ -20,10 +20,10 @@
                     @else
                         <span class="float-left d-flex align-items-center"><i class="ft-stop-circle text-danger" style="margin-right: 5px;"></i> Non Veg</span>
                     @endif
-                    <span class="float-right d-flex align-items-center"> {{$product['quantityLeft']}} Remaining <i class="ml-1 la ft-more-horizontal"></i></span>
+                    <span class="float-right d-flex align-items-center">Active <i class="ml-1 la ft-more-horizontal"></i></span>
                 </div>
                 <div class="card-footer text-muted">
-                    <span class="float-left">$ {{ $product['price'] }}</span>
+                    <span class="float-left">₹ {{ $product['price'] }}</span>
                     @if(!$product['cart'])
                         <a class="float-right" href="/add-to-cart/{{ $product['id']}}">Add To Cart <i class="la la-cart-plus"></i></a>
                     @else

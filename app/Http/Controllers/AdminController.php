@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Redirect;
+use App\Review;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,39 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $count_users = DB::table("users")->count();
+        $count_products = DB::table("products")->count();
+        $count_reviews = DB::table("reviews")->count();
+        $count_order_products = DB::table("order_products")->count();
+        $count_orders = DB::table("orders")->count();
+        $count_pending = DB::table("orders")->where('status',"pending")->count();
+        $count_approved = DB::table("orders")->where('status',"approved")->count();
+        $count_rejected = DB::table("orders")->where('status',"rejected")->count();
+
+        return view('admin.dashboard')
+                ->with("count_users", $count_users)
+                ->with("count_products", $count_products)
+                ->with("count_reviews", $count_reviews)
+                ->with("count_order_products", $count_order_products)
+                ->with("count_orders", $count_orders)
+                ->with("count_pending", $count_pending)
+                ->with("count_approved", $count_approved)
+                ->with("count_rejected", $count_rejected);
+    }
+    public function viewReviews() {
+        $data = DB::table('reviews')
+            ->join('users', 'reviews.userId', '=', 'users.id') 
+            ->join('products', 'reviews.prdId', '=', 'products.id') 
+            ->select('users.email', 'products.name','products.image','reviews.id','reviews.rate','reviews.desc') 
+            ->get();  
+
+        return view("admin.viewReview")->with("products",$data);
+    }
+    public function del($id) {
+        $review = Review::find($id);
+        $review->delete();
+
+        return Redirect::route('admin.viewReviews')->with('message', 'Review delted Succesfully'); 
     }
     public function viewUsers() {
         $data = DB::table('users')

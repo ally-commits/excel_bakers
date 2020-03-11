@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer("userId");
             $table->integer("adrId");
             $table->integer("total");
+            $table->boolean("review")->default(false);
             $table->string("status"); 
             $table->timestamps();
         });

@@ -55,25 +55,16 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror 
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Product Quantity</label> 
-                        <input type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
+                    </div> 
 
-                        @error('quantity')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror 
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-4 d-flex" style="align-items: center;">
                         <label class="mr-1">Veg</label>
                         <input type="radio" name="type" value="1" class="mr-3">
                         <label class="mr-1">Non Veg</label>
                         <input type="radio" name="type" value="0" class="">
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-8">
                         <label for="">Enter the Description</label>
                         <textarea name="desc" class="form-control @error('desc') is-invalid @enderror" name="desc" id="" cols="10" rows="5"

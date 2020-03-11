@@ -81,9 +81,9 @@
                                         <div class="flex-h" style="justify-content: space-between;">
                                             <h6>{{ $prd['name'] }}</h6>
                                             <div class="flex-h">
-                                            <span class="text-muted">${{ $prd['price'] }} x</span>
+                                            <span class="text-muted">₹ {{ $prd['price'] }} x</span>
                                                 <span class="text-muted">{{ $prd['cartQuantity'] }}  =</span>
-                                                <span class="text-muted">${{ $prd['cartQuantity'] * $prd['price']}}</span>
+                                                <span class="text-muted">₹ {{ $prd['cartQuantity'] * $prd['price']}}</span>
                                             </div>
                                         </div>
                                         <span class="border-span"></span>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="flex-h" style="justify-content: space-between;">
                                     <span>Total</span>
-                                    <span>${{ $total }}</span>
+                                    <span>₹ {{ $total }}</span>
                                 </div>
                                 <button type="submit" class="btn btn-block btn-success">Place Order</button>
                             </div>

@@ -18,10 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('desc');
-            $table->string('image');
-            $table->integer('quantity');
-            $table->boolean('type');
-            $table->integer('quantityLeft');
+            $table->string('image'); 
+            $table->boolean('type'); 
             $table->timestamps();
         });
     }

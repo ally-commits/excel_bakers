@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB; 
 use App\User;
+use App\Review;
 use App\Product;
 use App\Order;
 use App\Profile;
@@ -39,11 +40,40 @@ class HomeController extends Controller
             ->join('addresses', 'orders.adrId', '=', 'addresses.id') 
             ->select('orders.*','users.*','addresses.*')  
             ->where('users.id','=',Auth::user()->id)
-            ->get();  
+            ->get();   
+        $review = DB::table('reviews')
+                ->where('userId',"=",Auth::user()->id)
+                ->get();
+        $product = [];
+        $ids = [];
+        if(count($review) == 0) {
+            $product = DB::table('products')   
+                ->limit(1)
+                ->get();   
+        } else {
+            foreach($review as $r) {
+                array_push($ids, $r->prdId);
+            }
+            $product = DB::table("products")
+                    ->whereNotIn("id", $ids)
+                    ->limit(1)
+                    ->get();
+        } 
         return view('auth.profile')->with('profile', $profile)
                                 ->with('active', $active)
                                 ->with('address',$address)
-                                ->with('orders',$order);
+                                ->with('orders',$order)
+                                ->with('products',$product);
+    }
+    public function review(Request $request) {
+        $data = $request->all();
+        Review::create([
+            'prdId' => $data['prdId'],
+            'userId' => Auth::user()->id,
+            'desc' => $data['desc'],
+            'rate' => $data['rate']
+        ]);
+        return Redirect::route('profile',4)->with('message', 'Reviewd Succesfully'); 
     }
     public function editProfile(Request $request) {
         $data = $request->all(); 
@@ -148,4 +178,5 @@ class HomeController extends Controller
  
         return view('auth.invoice')->with('orders',$order)->with("orderProducts", $orderProducts);
     }
+
 }

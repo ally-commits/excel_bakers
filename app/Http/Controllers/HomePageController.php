@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Review;
+use DB;
 
 class HomePageController extends Controller
 {
@@ -21,5 +23,16 @@ class HomePageController extends Controller
             } 
         } 
         return view('welcome')->with('products',$products);
+    }
+    public function getProduct($id) {
+        $prd = Product::find($id);
+        $reviews = DB::table("reviews") 
+            ->join("users","users.id",'reviews.userId')
+            ->join("profiles","profiles.userId",'reviews.userId')
+            ->select("profiles.image",'users.name','reviews.*')
+            ->where('prdId',"=",$id)
+            ->get();
+
+        return view("product")->with("product",$prd)->with("reviews",$reviews);
     }
 }
