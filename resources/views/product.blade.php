@@ -17,7 +17,13 @@
                         <p>Price: {{ $product->price}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p>Type: {{ $product->type}}</p>
+                        <p> 
+                            @if($product['type'])
+                                <span class="float-left d-flex align-items-center"><i class="ft-stop-circle text-success" style="margin-right: 5px;"></i> Veg</span>
+                            @else
+                                <span class="float-left d-flex align-items-center"><i class="ft-stop-circle text-danger" style="margin-right: 5px;"></i> Non Veg</span>
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>

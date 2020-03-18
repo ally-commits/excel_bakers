@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Redirect;
+use Carbon\Carbon;
 use App\Review;
 
 class AdminController extends Controller
@@ -28,7 +29,15 @@ class AdminController extends Controller
         $count_pending = DB::table("orders")->where('status',"pending")->count();
         $count_approved = DB::table("orders")->where('status',"approved")->count();
         $count_rejected = DB::table("orders")->where('status',"rejected")->count();
-
+        $db = ['users','orders','reviews'];
+        $week = [];
+        $month = [];
+        foreach($db as $d) {
+            $week[$d] = DB::table($d)->whereDate('created_at', Carbon::now()->subDays(7))->count();
+        }
+        foreach($db as $d) {
+            $month[$d] = DB::table($d)->whereMonth('created_at', Carbon::now()->month)->count();
+        }  
         return view('admin.dashboard')
                 ->with("count_users", $count_users)
                 ->with("count_products", $count_products)
@@ -37,6 +46,8 @@ class AdminController extends Controller
                 ->with("count_orders", $count_orders)
                 ->with("count_pending", $count_pending)
                 ->with("count_approved", $count_approved)
+                ->with("week", $week)
+                ->with("month", $month)
                 ->with("count_rejected", $count_rejected);
     }
     public function viewReviews() {
@@ -67,7 +78,7 @@ class AdminController extends Controller
             ->join('users', 'orders.userId', '=', 'users.id') 
             ->join('addresses', 'orders.adrId', '=', 'addresses.id') 
             ->select('orders.id','orders.total','orders.status','orders.created_at','addresses.address','addresses.phoneNumber')   
-            ->where('orders.status','=','pending')  
+            ->latest()  
             ->get();  
         // dd($order);
         $orderProducts = DB::table("order_products")

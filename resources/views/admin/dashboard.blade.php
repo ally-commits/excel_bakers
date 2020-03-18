@@ -160,69 +160,86 @@ pt>
         </div>  
 
         <div class="card">
-                <div class="card-content">
-                  <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
-                      <div class="card-body text-center">
-                        <div class="card-header mb-2">
-                          <span class="success">New Feedbacks</span>
-                          <h3 class="display-4 blue-grey darken-1">24,879</h3>
-                        </div>
-                        <div class="card-content">
-                          <div style="display:inline;width:150px;height:150px;"><input type="text" value="35" class="knob hide-value responsive angle-offset" data-angleoffset="40" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#28D094" data-knob-icon="icon-note" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-note" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                          <ul class="list-inline clearfix mt-2">
-                            <li class="border-right-blue-grey border-right-lighten-2 pr-2">
-                              <h1 class="blue-grey darken-1 text-bold-400">95%</h1>
-                              <span class="success"><i class="la la-caret-up"></i> Positive</span>
-                            </li>
-                            <li class="pl-2">
-                              <h1 class="blue-grey darken-1 text-bold-400">5%</h1>
-                              <span class="danger darken-2"><i class="la la-caret-down"></i> Negative</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
-                      <div class="card-body text-center">
-                        <div class="card-header mb-2">
-                          <span class="warning darken-2">New Subscribers</span>
-                          <h3 class="display-4 blue-grey darken-1">14,962</h3>
-                        </div>
-                        <div class="card-content">
-                          <div style="display:inline;width:150px;height:150px;"><input type="text" value="56" class="knob hide-value responsive angle-offset" data-angleoffset="0" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#FF9149" data-knob-icon="icon-user" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-user" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                          <ul class="list-inline clearfix mt-2">
-                            <li>
-                              <h1 class="blue-grey darken-1 text-bold-400">1465</h1>
-                              <span class="warning darken-2"><i class="la la-user"></i> Average Monthly Subscribers</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
-                      <div class="card-body text-center">
-                        <div class="card-header mb-2">
-                          <span class="danger">Total Users</span>
-                          <h3 class="display-4 blue-grey darken-1">76,894</h3>
-                        </div>
-                        <div class="card-content">
-                          <div style="display:inline;width:150px;height:150px;"><input type="text" value="75" class="knob hide-value responsive angle-offset" data-angleoffset="20" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#FF4961" data-knob-icon="icon-users" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                          <ul class="list-inline clearfix mt-2">
-                            <li class="border-right-blue-grey border-right-lighten-2 pr-2">
-                              <h1 class="blue-grey darken-1 text-bold-400">24%</h1>
-                              <span class="success"><i class="icon-male"></i> Male</span>
-                            </li>
-                            <li class="pl-2">
-                              <h1 class="blue-grey darken-1 text-bold-400">76%</h1>
-                              <span class="danger darken-2"><i class="icon-female"></i> Female</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+          <div class="card-content">
+            <div class="row">
+              <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                <div class="card-body text-center">
+                  <div class="card-header mb-2">
+                    <span class="success">New Reviews this Week</span>
+                    <h3 class="display-4 blue-grey darken-1">{{ $week['reviews']}}</h3>
+                  </div>
+                  <div class="card-content">
+                    <div style="display:inline;width:150px;height:150px;"><input type="text" value="{{ $week['reviews'] / $count_reviews * 100 }}" class="knob hide-value responsive angle-offset" data-angleoffset="40" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#28D094" data-knob-icon="icon-note" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-note" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                      
                   </div>
                 </div>
               </div>
+              <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                <div class="card-body text-center">
+                  <div class="card-header mb-2">
+                    <span class="warning darken-2">New Users this Week</span>
+                    <h3 class="display-4 blue-grey darken-1">{{ $week['users'] }}</h3>
+                  </div>
+                  <div class="card-content">
+                    <div style="display:inline;width:150px;height:150px;"><input type="text" value="{{ $week['users'] / $count_users * 100 }}" class="knob hide-value responsive angle-offset" data-angleoffset="0" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#FF9149" data-knob-icon="icon-user" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-user" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                <div class="card-body text-center">
+                  <div class="card-header mb-2">
+                    <span class="danger">Orders This Week</span>
+                    <h3 class="display-4 blue-grey darken-1">{{ $week['orders'] }}</h3>
+                  </div>
+                  <div class="card-content">
+                    <div style="display:inline;width:150px;height:150px;"><input type="text" value="{{ $week['orders'] / $count_orders * 100 }}" class="knob hide-value responsive angle-offset" data-angleoffset="20" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#FF4961" data-knob-icon="icon-users" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-content">
+            <div class="row">
+              <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                <div class="card-body text-center">
+                  <div class="card-header mb-2">
+                    <span class="success">New Reviews this Month</span>
+                    <h3 class="display-4 blue-grey darken-1">{{ $month['reviews']}}</h3>
+                  </div>
+                  <div class="card-content">
+                    <div style="display:inline;width:150px;height:150px;"><input type="text" value="{{ $month['reviews'] / $count_reviews * 100 }}" class="knob hide-value responsive angle-offset" data-angleoffset="40" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#28D094" data-knob-icon="icon-note" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-note" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                      
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                <div class="card-body text-center">
+                  <div class="card-header mb-2">
+                    <span class="warning darken-2">New Users this Month</span>
+                    <h3 class="display-4 blue-grey darken-1">{{ $month['users'] }}</h3>
+                  </div>
+                  <div class="card-content">
+                    <div style="display:inline;width:150px;height:150px;"><input type="text" value="{{ $month['users'] / $count_users * 100 }}" class="knob hide-value responsive angle-offset" data-angleoffset="0" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#FF9149" data-knob-icon="icon-user" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-user" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                <div class="card-body text-center">
+                  <div class="card-header mb-2">
+                    <span class="danger">Orders This month</span>
+                    <h3 class="display-4 blue-grey darken-1">{{ $month['orders'] }}</h3>
+                  </div>
+                  <div class="card-content">
+                    <div style="display:inline;width:150px;height:150px;"><input type="text" value="{{ $month['orders'] / $count_orders * 100 }}" class="knob hide-value responsive angle-offset" data-angleoffset="20" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#e1e1e1" data-readonly="true" data-fgcolor="#FF4961" data-knob-icon="icon-users" readonly="readonly" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: bold 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px; display: none;"><i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 @endsection

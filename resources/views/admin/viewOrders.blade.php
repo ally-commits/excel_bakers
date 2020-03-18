@@ -39,8 +39,10 @@
                 @else
                     <div class="badge badge-danger mb-1">{{ $order->status }}</div>
                 @endif   
+                @if($order->status == "pending")
                 <a href="/admin/approve-order/{{$order->id}}">Approved Order</a>
                 <a href="/admin/cancel-order/{{$order->id}}">Cancel Order</a> 
+                @endif
             </div>
         </div>
 
