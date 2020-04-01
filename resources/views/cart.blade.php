@@ -5,6 +5,25 @@
 @endsection
 @section('content')
 <div class="card container mt-1">
+        
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> Something went wrong<br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(Session::has('error'))
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> Something went wrong<br>
+            <ul>
+                <li>{{ Session::get('error') }}</li>
+            </ul>
+        </div>
+    @endif
     <div class="card-header d-flex" style="justify-content: space-between;">
         <h4 class="card-title">Cart Items</h4>
         <a class="card-title" href="/cart/clear-all">Clear Cart</a>
@@ -58,14 +77,24 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" class="flex-v" action="{{ route('placeOrder') }}">
+                        <form method="POST" class="flex-v" action="/payment">
                             @csrf
                             <div class="flex-v">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> Something went wrong<br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                                 <label for="">Select An Address</label>
                                 <div class="flex-v">
                                     @foreach($address as $adr) 
                                         <div class="flex-h align-items-center">
-                                            <input type="radio" name="adr" value="{{ $adr->id }}" class="mr-1" checked>
+                                            <input type="radio" name="address" value="{{ $adr->id }}" class="mr-1" checked>
                                             <div class="flex-v">
                                                 <p class="p-0 m-0">{{ $adr->address }}</p>
                                                 <p>{{ $adr->phoneNumber }}</p>

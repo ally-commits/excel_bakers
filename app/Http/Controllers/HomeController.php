@@ -40,6 +40,7 @@ class HomeController extends Controller
             ->join('addresses', 'orders.adrId', '=', 'addresses.id') 
             ->select('orders.*','users.*','addresses.*')  
             ->where('users.id','=',Auth::user()->id)
+            ->where("orders.orderPlaced", true)
             ->get();   
         $review = DB::table('reviews')
                 ->where('userId',"=",Auth::user()->id)
@@ -121,41 +122,7 @@ class HomeController extends Controller
         $adr->delete();
         
         return Redirect::route('profile',2)->with('message', 'Address Removed Succesfully');  
-    }
-    public function placeOrder(Request $request) {
-        $id = $request->adr;
-        $adr = Address::find($id);
-        $cart = session()->get('cart');
-        $products = Product::get();
-        $total = 0;
-        if($cart) {
-            foreach($products as $product) { 
-                foreach($cart as $prd) {
-                    if($prd['id'] == $product['id']) {
-                        $product['cart'] = 1;
-                        $product['cartQuantity'] = $prd['quantity'];                   
-                        $total = $total + $prd['quantity'] * $product['price'];
-                    }
-                }
-            } 
-        }  
-        $order = Order::create([
-            'userId' => Auth::user()->id,
-            'adrId' => $id,
-            'total' => $total,
-            'status' => 'pending'
-        ]);
-        foreach($products as $prd) {
-            if($prd['cart'] == 1) {
-                OrderProduct::create([
-                    'orderId' => $order->id, 
-                    'productId' => $prd['id'],
-                    'quantity' => $prd['cartQuantity']
-                ]);
-            }
-        }
-        return Redirect::route('profile',3)->with('message', 'Order Placed Succesfully'); 
-    }
+    } 
     public function cancelOrder($active, $id) {
         DB::table("orders")
             ->where("orders.id","=", $id)

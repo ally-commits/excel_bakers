@@ -29,5 +29,12 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    'paytm-wallet' => [
+        'env' => 'local', // values : (local | production)
+        'merchant_id' => 'pUAflv81922826833957',
+        'merchant_key' => 'M@ENbxc@nCZL#Rub',
+        'merchant_website' => 'WEBSTAGING',
+        'channel' => 'WEB',
+        'industry_type' => 'Retail',
+    ],
 ];

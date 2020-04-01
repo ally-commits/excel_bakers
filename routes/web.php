@@ -18,6 +18,8 @@ Auth::routes();
 
 Route::get('/profile/{active}', 'HomeController@index')->name('profile');
 Route::get('/cart', 'CartController@index')->name('cart');
+Route::post('payment', 'PaymentController@eventOrderGen');
+Route::post('payment/status', 'PaymentController@paymentCallback');
 Route::get('/add-to-cart/{id}', 'CartController@addToCart')->name('addToCart');
 Route::get('/cart/clear-all', 'CartController@forget')->name('clearAllCart');
 Route::get('/cart/increment/{id}', 'CartController@increment')->name('cartIncrement');
@@ -25,8 +27,7 @@ Route::get('/cart/decrement/{id}', 'CartController@decrement')->name('cartDncrem
 Route::get('/cart/remove/{id}', 'CartController@remove')->name('cartRemove');
 Route::post('/edit-profile','HomeController@editProfile')->name('editProfile');
 Route::post('/add-address','HomeController@addAddress')->name('addAddress');
-Route::get('/del-address/{id}','HomeController@deleteAddress')->name('deleteAddress');
-Route::post('/place-order','HomeController@placeOrder')->name('placeOrder');
+Route::get('/del-address/{id}','HomeController@deleteAddress')->name('deleteAddress'); 
 Route::get('/profile/{active}/cancel-order/{id}','HomeController@cancelOrder')->name('cancelOrder');
 Route::get('/profile/{active}/invoice/{id}','HomeController@invoice')->name('invoice');
 Route::get('/profile/{active}/invoice/{id}','HomeController@invoice')->name('invoice');

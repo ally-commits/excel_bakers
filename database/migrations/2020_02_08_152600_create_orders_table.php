@@ -15,12 +15,22 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer("userId");
-            $table->integer("adrId");
+            $table->unsignedBigInteger("userId");
+            $table->unsignedBigInteger("adrId");
             $table->integer("total");
-            $table->boolean("review")->default(false);
+            $table->boolean("review")->default(false); 
+            $table->boolean("orderPlaced")->default(false);
+            $table->string("transaction_id");
             $table->string("status"); 
             $table->timestamps();
+
+            $table->foreign('userId')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+            
+            $table->foreign('adrId')
+                ->references('id')->on('addresses')
+                ->onDelete('cascade');
         });
     }
 

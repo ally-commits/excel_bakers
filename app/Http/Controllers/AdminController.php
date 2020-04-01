@@ -25,19 +25,41 @@ class AdminController extends Controller
         $count_products = DB::table("products")->count();
         $count_reviews = DB::table("reviews")->count();
         $count_order_products = DB::table("order_products")->count();
-        $count_orders = DB::table("orders")->count();
-        $count_pending = DB::table("orders")->where('status',"pending")->count();
-        $count_approved = DB::table("orders")->where('status',"approved")->count();
-        $count_rejected = DB::table("orders")->where('status',"rejected")->count();
-        $db = ['users','orders','reviews'];
-        $week = [];
-        $month = [];
+        $count_orders = DB::table("orders")->where('orderPlaced',true)->count();
+        $count_pending = DB::table("orders")->where('status',"pending")->where('orderPlaced',true)->count();
+        $count_approved = DB::table("orders")->where('status',"approved")->where('orderPlaced',true)->count();
+        $count_rejected = DB::table("orders")->where('status',"rejected")->where('orderPlaced',true)->count();
+        $db = ['users','orders','reviews']; 
+        $products_count = DB::table('order_products')
+                ->select('productId as id', DB::raw('sum(quantity) as quantity'))
+                ->groupBy('productId')
+                ->orderBy("quantity","desc")
+                ->limit(3)
+                ->get();
+        foreach($products_count as $prd) {
+            $data = DB::table("products")->where("id", $prd->id)->first();
+            $prd->name = $data->name;
+        } 
+         
+        $month = [];  
         foreach($db as $d) {
-            $week[$d] = DB::table($d)->whereDate('created_at', Carbon::now()->subDays(7))->count();
+            if($d == 'orders')
+                $month[$d] = DB::table($d)->where('orderPlaced',true)->whereMonth('created_at', Carbon::now()->month)->count();
+            else
+                $month[$d] = DB::table($d)->whereMonth('created_at', Carbon::now()->month)->count();
         }
-        foreach($db as $d) {
-            $month[$d] = DB::table($d)->whereMonth('created_at', Carbon::now()->month)->count();
-        }  
+        $order = DB::table('orders')
+            ->join('users', 'orders.userId', '=', 'users.id') 
+            ->join('addresses', 'orders.adrId', '=', 'addresses.id') 
+            ->select('users.name as name','orders.total',"orders.id as id")
+            ->where("orders.orderPlaced", true) 
+            ->limit(3)
+            ->get(); 
+
+        $orderProducts = DB::table("order_products")
+            ->join('products','order_products.productId','=','products.id')
+            ->select('products.name',"order_products.orderId as id")                 
+            ->get();  
         return view('admin.dashboard')
                 ->with("count_users", $count_users)
                 ->with("count_products", $count_products)
@@ -46,8 +68,9 @@ class AdminController extends Controller
                 ->with("count_orders", $count_orders)
                 ->with("count_pending", $count_pending)
                 ->with("count_approved", $count_approved)
-                ->with("week", $week)
                 ->with("month", $month)
+                ->with("order", $order)->with("orderProducts", $orderProducts)
+                ->with("products_count",$products_count)
                 ->with("count_rejected", $count_rejected);
     }
     public function viewReviews() {
@@ -78,9 +101,9 @@ class AdminController extends Controller
             ->join('users', 'orders.userId', '=', 'users.id') 
             ->join('addresses', 'orders.adrId', '=', 'addresses.id') 
             ->select('orders.id','orders.total','orders.status','orders.created_at','addresses.address','addresses.phoneNumber')   
+            ->where("orders.orderPlaced", true)
             ->latest()  
-            ->get();  
-        // dd($order);
+            ->get();   
         $orderProducts = DB::table("order_products")
             ->join('products','order_products.productId','=','products.id')
             ->select('order_products.*','products.price','products.name','products.image')                 

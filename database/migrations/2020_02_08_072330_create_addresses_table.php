@@ -17,8 +17,11 @@ class CreateAddressesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger("phoneNumber");
             $table->string("address"); 
-            $table->integer("user_id");
+            $table->unsignedBigInteger("user_id");
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

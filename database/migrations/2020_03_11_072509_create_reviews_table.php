@@ -17,9 +17,17 @@ class CreateReviewsTable extends Migration
             $table->bigIncrements('id');
             $table->string("rate");
             $table->string("desc");
-            $table->string("userId");
-            $table->string("prdId");
+            $table->unsignedBigInteger("userId");
+            $table->unsignedBigInteger("prdId");
             $table->timestamps();
+
+            $table->foreign('userId')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('prdId')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
         });
     }
 
