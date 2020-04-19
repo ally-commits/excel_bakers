@@ -52,7 +52,7 @@
                                 <span style="padding: 0px 6px;">{{ $product['cartQuantity']}}</span>
                                 <a class="ft-minus bl p" href="/cart/decrement/{{$product['id']}}"></a>
                             </div>
-                            <h5 class="m-0 mr-1">$ {{ $product['cartQuantity'] * $product['price']}}</h5>
+                            <h5 class="m-0 mr-1">₹ {{ $product['cartQuantity'] * $product['price']}}</h5>
                             <a class="hover flex-h" href="/cart/remove/{{ $product['id'] }}"><i class="ft-x" style="font-size: 18px;"></i> </a>
                         </div>
                     </div> 
@@ -61,7 +61,7 @@
             @endforeach
             <div class="flex-h w-100 p-2" style="justify-content: space-between;">
                 <h3>Total</h3>
-                <h3>$ {{ $total }}</h3>
+                <h3>₹ {{ $total }}</h3>
             </div>
             <button type="button" class="btn btn-outline-success mb-1" data-toggle="modal" data-target="#xlarge">
                 Proceed to Payment

@@ -47,27 +47,28 @@ class PaymentController extends Controller
                     }
                 }
             } 
-        }  
+        }
+        $uniq = uniqid();  
         $order = Order::create([
+            'id' => $uniq,
             'userId' => Auth::user()->id,
             'adrId' => $id,
             'total' => $total,
             'transaction_id' => 0,
             'status' => 'pending'
-        ]);
+        ]); 
         foreach($products as $prd) {
             if($prd['cart'] == 1) {
                 OrderProduct::create([
-                    'orderId' => $order->id, 
+                    'orderId' => $uniq, 
                     'productId' => $prd['id'],
                     'quantity' => $prd['cartQuantity']
                 ]);
             }
-        }  
- 
+        }   
         $payment = PaytmWallet::with('receive');
         $payment->prepare([
-          'order' => $order->id,
+          'order' => $uniq,
           'user' => Auth::user()->id,
           'mobile_number' => $adr->phoneNumber, 
           'email' => Auth::user()->email, 
