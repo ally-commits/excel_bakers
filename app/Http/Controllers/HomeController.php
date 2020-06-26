@@ -38,13 +38,13 @@ class HomeController extends Controller
         $order = DB::table('orders')
             ->join('users', 'orders.userId', '=', 'users.id') 
             ->join('addresses', 'orders.adrId', '=', 'addresses.id') 
-            ->select('orders.*','users.*','addresses.*')  
+            ->select('orders.*','users.*','addresses.*',"orders.id as id")  
             ->where('users.id','=',Auth::user()->id)
             ->where("orders.orderPlaced", true)
             ->get();   
         $review = DB::table('reviews')
                 ->where('userId',"=",Auth::user()->id)
-                ->get();
+                ->get(); 
         $product = [];
         $ids = [];
         if(count($review) == 0) {
@@ -132,16 +132,16 @@ class HomeController extends Controller
     }
     public function invoice($active, $id) {
         $order = DB::table('orders')
-            ->join('users', 'orders.userId', '=', 'users.id') 
-            ->join('addresses', 'orders.adrId', '=', 'addresses.id') 
+            ->join('users', 'orders.userId', 'users.id') 
+            ->join('addresses', 'orders.adrId', 'addresses.id') 
             ->select('orders.id','orders.total','orders.status','orders.created_at','orders.updated_at','addresses.address','addresses.phoneNumber')   
-            ->where('orders.id','=',$id)  
-            ->get();   
+            ->where('orders.id','=',$id)   
+            ->get();  
         $orderProducts = DB::table("order_products")
             ->join('products','order_products.productId','=','products.id')
             ->select('order_products.*','products.price','products.name','products.image','products.desc')   
             ->where('order_products.orderId','=',$id)              
-            ->get();
+            ->get();  
  
         return view('auth.invoice')->with('orders',$order)->with("orderProducts", $orderProducts);
     }

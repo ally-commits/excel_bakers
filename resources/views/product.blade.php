@@ -14,7 +14,7 @@
                 <p class="text-muted">{{ $product->desc }}</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Price: {{ $product->price}}</p>
+                        <p>Price: ₹{{ $product->price}}</p>
                     </div>
                     <div class="col-md-6">
                         <p> 

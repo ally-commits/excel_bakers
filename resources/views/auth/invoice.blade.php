@@ -26,7 +26,7 @@
                 <p class="pb-3"># INV-001001</p>
                 <ul class="px-0 list-unstyled">
                     <li>Balance Due</li>
-                    <li class="lead text-bold-800">$ {{ $orders[0]->total}}</li>
+                    <li class="lead text-bold-800">Rs {{ $orders[0]->total}}</li>
                 </ul>
             </div>
         </div> 
@@ -67,9 +67,9 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td><strong>{{ $prd->name }} </strong><br>{{ $prd->desc }}</td>
-                                    <td class="text-right">$ {{ $prd->price }}</td>
+                                    <td class="text-right">Rs {{ $prd->price }}</td>
                                     <td class="text-right">{{ $prd->quantity }}</td>
-                                    <td class="text-right">${{ $prd->quantity  * $prd->price}}</td>
+                                    <td class="text-right">Rs {{ $prd->quantity  * $prd->price}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -84,15 +84,15 @@
                             <tbody>
                                 <tr>
                                 <td>Sub Total</td>
-                                <td class="text-right">$ {{$orders[0]->total}}.00</td>
+                                <td class="text-right">Rs {{$orders[0]->total}}.00</td>
                                 </tr>
                                 <tr>
                                 <td>TAX (12%)</td>
-                                <td class="text-right">$ {{ $orders[0]->total * 0.12 }}.00</td>
+                                <td class="text-right">Rs {{ $orders[0]->total * 0.12 }}.00</td>
                                 </tr>
                                 <tr>
                                 <td class="text-bold-800">Total</td>
-                                <td class="text-bold-800 text-right">${{ $orders[0]->total + $orders[0]->total * 0.12}}.00</td>
+                                <td class="text-bold-800 text-right">Rs {{ $orders[0]->total + $orders[0]->total * 0.12}}.00</td>
                                 </tr> 
                             </tbody>
                         </table>
